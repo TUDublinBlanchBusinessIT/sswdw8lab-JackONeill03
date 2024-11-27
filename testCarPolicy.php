@@ -9,5 +9,12 @@ echo "the policy " . $myCarpolicy;
 echo "has " . $myCarpolicy->getTotalYearsNoClaims();
 echo "years no claims.";
 
+public function getTotalYearsNoClaims()
+{
+     $currentDate = new DateTime();
+     $lastDate= new DateTime($this->dateOfLastClaim);
+     $interval = $currentDate->diff($lastDate);
+     return $interval->format("%y");
+}
 
 ?>
